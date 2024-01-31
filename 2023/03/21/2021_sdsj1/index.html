@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="ch" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>2021省队集训-模拟 | FireInIce's Blog</title><meta name="keywords" content="日志"><meta name="author" content="FireInIce"><meta name="copyright" content="FireInIce"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="2021省队集训-模拟Day1A. 数排列 给定 $n$, 和排列 $x_m$, 求有多少个排列 $a_n$ 满足 $x$ 为 $a$ 字典序最小的长 $m$ 的子序列.膜 $998244353$$m\le n\le 2. 5\times 10^5$  开门降智 考虑 $x$ 为字典序最小的子序列的条件. 容易发现, 如果某个位置存在 $x_i\le x_{i-1}$, 那么可以选择 $x_{1\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021省队集训-模拟">
+<meta property="og:url" content="https://fireinicecode.github.io/2023/03/21/2021_sdsj1/index.html">
+<meta property="og:site_name" content="FireInIce&#39;s Blog">
+<meta property="og:description" content="2021省队集训-模拟Day1A. 数排列 给定 $n$, 和排列 $x_m$, 求有多少个排列 $a_n$ 满足 $x$ 为 $a$ 字典序最小的长 $m$ 的子序列.膜 $998244353$$m\le n\le 2. 5\times 10^5$  开门降智 考虑 $x$ 为字典序最小的子序列的条件. 容易发现, 如果某个位置存在 $x_i\le x_{i-1}$, 那么可以选择 $x_{1\">
+<meta property="og:locale">
+<meta property="og:image" content="https://fireinicecode.github.io/img/2022-10-24-20-18-14-image.png">
+<meta property="article:published_time" content="2023-03-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-25T11:06:21.631Z">
+<meta property="article:author" content="FireInIce">
+<meta property="article:tag" content="日志">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fireinicecode.github.io/img/2022-10-24-20-18-14-image.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://fireinicecode.github.io/2023/03/21/2021_sdsj1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#a8a8ff","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://unpkg.com/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2021省队集训-模拟',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-01-25 19:06:21'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/blog.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.ico" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/2022-10-24-20-18-14-image.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">FireInIce's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> Apps</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/apps/grapheditor/"><i class="fa-fw fas-link"></i><span> GraphEditor</span></a></li><li><a class="site-page child" href="/apps/p5chess/"><i class="fa-fw fas-link"></i><span> Gobang</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2021省队集训-模拟</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2023-03-20T16:00:00.000Z" title="Created 2023-03-21 00:00:00">2023-03-21</time></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="2021省队集训-模拟"><a href="#2021省队集训-模拟" class="headerlink" title="2021省队集训-模拟"></a>2021省队集训-模拟</h1><h2 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h2><h3 id="A-数排列"><a href="#A-数排列" class="headerlink" title="A. 数排列"></a>A. 数排列</h3><blockquote>
+<p>给定 $n$, 和排列 $x_m$, 求有多少个排列 $a_n$ 满足 $x$ 为 $a$ 字典序最小的长 $m$ 的子序列.<br>膜 $998244353$<br>$m\le n\le 2. 5\times 10^5$</p>
+</blockquote>
+<p>开门降智</p>
+<p>考虑 $x$ 为字典序最小的子序列的条件.</p>
+<p>容易发现, 如果某个位置存在 $x_i\le x_{i-1}$, 那么可以选择 $x_{1\ldots i-2}, x_{i\ldots m}$ 以及再往后一个, 这种情况不行当且仅当剩下的位置不够多, 也就是 $x_i$ 的位置后面恰好全是 $x_i$ 往后的部分.</p>
+<p>于是我们只需要解决对于一个递增的 $x$ 的问题去凑组合数, 考虑把 $x$ 放一排, 从小到大插空即可.</p>
+<p>复杂度线性.</p>
+<h3 id="B-取石子游戏"><a href="#B-取石子游戏" class="headerlink" title="B. 取石子游戏"></a>B. 取石子游戏</h3><blockquote>
+<p>Alice 和 Bob 在玩取石子游戏, 游戏规则是这样的: 游戏开始时在他们面前有若干堆石子, Alice 先手进行游戏, 两人轮流操作, 玩家每轮操作时可以选取一堆石子, 并从中至少取走 $1$ 颗石子, 可以把这堆石子取空, 如果某轮中某位玩家无法进行任何操作(即所有石子均被取完了), 则她或他输掉游戏, 另一方赢得游戏.</p>
+<p>Alice 和 Bob 两人都十分聪明, 并且他们知道彼此均会以最优策略进行操作, 所以他们可以在游戏开始前就预知游戏的赢家是谁.</p>
+<p>Charlie 为 Alice 和 Bob 准备了一项任务: 在 Alice 和 Bob 面前有 $n$ 堆石子, 编号为 $1. . . n$, 初始时第 $i$ 堆中有 $a_i$ 个石子.</p>
+<p>Charlie 会依次执行 $q$ 次操作, 每次操作是以下两类之一:</p>
+<ol>
+<li>格式为 <code>1 l r x</code>: 对于编号在 $[l, r]$ 之间的石子堆 $i$, 如果不足 $x$ 颗石子, 把它补充到 $x$ 颗, 否则不做变化.</li>
+<li>格式为 <code>2 l r x</code>: 询问 Alice 和 Bob 如果此时只保留编号在 $[l, r]$ 之间的石子堆, 再加入一堆新的含有 $x$ 个石子的石子堆, 然后进行游戏, 那么 Alice 在进行第一轮操作时有几种操作方案可以保证她的胜利, 两种操作方案不同当且仅当选取了编号不同的石子堆, 或选取了相同编号的石子堆但是取走了不同数量的石子.</li>
+</ol>
+<p>注意在第 $2$ 类操作中, Alice 和 Bob 并不会真的进行游戏, 所以也不会对石子堆有任何改变.</p>
+<p>Alice 和 Bob 虽然回答了询问, 但是 Charlie 不相信他们的答案. 请你编写程序计算每次游戏时 Alice 在第一轮中的可行操作数.</p>
+<p>$n, q\le 2\times 10^5$</p>
+</blockquote>
+<p>感觉较简单.</p>
+<p>先考虑查询, 考虑求有多少种走完先手必败, 也就是异或和为 $x$, 那么求出当前区间异或和 $s$, 就是有多少个数 $a$ 使得 $a^(a-i)&#x3D;(s^x)$, 也就是 $a^(s^x)&lt;a$, 发现这个等价于 $a$ 在 $s^x$ 的最高位上为1.</p>
+<p>瞪着那个修改, 显然有个均摊: 区间内值的个数是递减的, 可以用Segment Tree Beats, 如果当前区间不只有一个数就向下递归, 维护区间内每个位上的 $1$ 的个数, 复杂度是 $n\log n\log v$</p>
+<h3 id="C-滑冰"><a href="#C-滑冰" class="headerlink" title="C. 滑冰"></a>C. 滑冰</h3><blockquote>
+<p>有一个 $n\times m$ 的滑冰场, 其中有一些障碍物. 你一开始在滑冰场的某个位置上.</p>
+<p>每次你可以选择上下左右四个方向之一进行移动, 因为冰面很滑所以你会一直朝选定的方向移动直到碰到边界或障碍物.</p>
+<p>用 <code>. </code> 表示无障碍物的冰面, 用 <code>#</code> 表示障碍物, 用 <code>S</code> 表示你初始的位置(这个位置也是无障碍物的冰面), 例如:</p>
+<p><code>. . . . . </code></p>
+<p><code>. . . . . </code></p>
+<p><code>#. S. #</code></p>
+<p><code>. . . . . </code></p>
+<p><code>. . #. . </code></p>
+<p>就描述了一个可能的滑冰场. 将第 $i$ 行第 $j$ 列的位置记作 $(i, j)$, 则你在 $(3, 3)$, 向上会移动到 $(1, 3)$, 向下会移动到 $(4, 3)$, 向左会移动到 $(3, 2)$, 向右会移动到 $(3, 4)$.</p>
+<p>现在将一些无障碍物的冰面上放上标记点, 用 <code>o</code> 表示, 也就是说 <code>o</code> 表示标记点, 而且这个位置也是无障碍物的冰面.</p>
+<p>保证你初始的位置上没有标记点.</p>
+<p>请问你能否规划一个移动方式, 使得你的移动路线可以经过所有的标记点呢?</p>
+</blockquote>
+<p>对于一个极长的横着&#x2F;竖着的段, 走到一个点就能走到全部.</p>
+<p>对于每个标记点, 要求横着&#x2F;竖着的段至少选择一个.</p>
+<p>这个限制是2SAT, 限制是若两个段不可以在某个方向连通, 就不能同时选, 考虑这样得到的最终选择集合以及其中表示”可以走”的关系的连边, 因为得到的是竞赛图+某些部分有双向边(当双连通时), 因此缩点后是链, 一定可以走出来.</p>
+<h2 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h2><h3 id="A-我已经完全理解了DFS序线段树"><a href="#A-我已经完全理解了DFS序线段树" class="headerlink" title="A. 我已经完全理解了DFS序线段树"></a>A. 我已经完全理解了DFS序线段树</h3><blockquote>
+<p>给定一棵有 $n$ 个结点的有根树, 根结点为 $1$ 号点.</p>
+<p>每个点有权值 $a_i$, 初始时均为 $0$, 以及花费 $v_i$, 表示对它进行一次操作时要花费的代价.</p>
+<p>对点 $u$ 进行一次参数为 $x$ 的操作, 即是在树中将它子树中的所有点的权值都加上 $x$. 要求 $x$ 为整数且 $1\le x\le 10^9$</p>
+<p>要让每个叶子的权值互不相同且非零, 即当 $i, j(i\neq j)$ 为叶子时要满足 $a_i\neq 0$ 且 $a_i\neq a_j$.</p>
+<p>你需要构造一个总花费尽量小的操作序列.</p>
+<p>$2\leq n\leq 2\times 10^5, 1\leq v_i\leq 10^9$.</p>
+</blockquote>
+<p>考虑让花费最小: 容易发现一个简单贪心, 合法方案下, 一个点的作用是它可以等同于子树内的任意一点(你可以操作这个点, 然后不操作其子树里的每一个点), 于是可以从底向上贪心.</p>
+<p>那么问题是确定了操作集合之后如何构造 $x$.</p>
+<p>现在已经有了每个叶子到根的集合互不相同, 也就是任意两个叶子最深的操作点不同, 所以按照操作点从上往下操作, 就可以逐步确定叶子. 于是就可做了.</p>
+<p>一个牛逼做法是, 随机, 冲突了就重新随, 大约30次就能找到.</p>
+<h3 id="B-我已经完全理解了字符串哈希"><a href="#B-我已经完全理解了字符串哈希" class="headerlink" title="B. 我已经完全理解了字符串哈希"></a>B. 我已经完全理解了字符串哈希</h3><blockquote>
+<p>对于两个合适的整数 $base$ 和 $m$, 可以定义字符串哈希函数 $h(s)$:</p>
+<p>$$h(s)&#x3D;(\sum_{i&#x3D;1}^{|s|}s_i\cdot base^{|s|-i})\bmod m$$</p>
+<p>其中 $s &#x3D; s_1s_2. . . s_{ \vert s \vert }$ 是一个由小写字母组成的字符串, 并且假设每个字符在式中被看成它在字母表中的编号, 例如字符 <code>a</code> 被看成 $1$.</p>
+<p>本题中我们取 $base &#x3D; 2333333, m &#x3D; 998244353$.</p>
+<p>给定一个字符串 $s$, 请求出它的所有连续子串中哈希值的最大值.</p>
+<p>保证给定的字符串是随机生成的: 先指定字符串长度, 每个字符随机在 $26$ 个小写字母中选取.</p>
+<p>$\sum \vert s\vert \le 10^6$</p>
+</blockquote>
+<p>第一反应是对着前缀和, 一个数据结构扫描线上去扫, 但被取模干爆了.</p>
+<p>注意到数据随机, 那么可以当成有 $n^2$ 个随机数, 此时最大值应该在 $m-\dfrac{m}{n^2}$ 附近, 那么从 $m$ 开始, 每次 $O(n)$ 的验证某个答案, 复杂度是惊喜的 $\dfrac{m}{n}$, 又因为大家都会 $n^2$ 暴力, 平衡一下看起来就很好.</p>
+<p>那么问题来到 $O(n)$ 验证是否存在某个答案, 容易想到先前缀和, 于是就是求 $j$ 使得 $s_i-s_j\cdot base^{i-j}&#x3D;v, \dfrac{s_j}{base^j}&#x3D;\dfrac{s_i-v}{base^i}$, 于是一个哈希表即可.</p>
+<h3 id="C-我已经完全理解了多源BFS"><a href="#C-我已经完全理解了多源BFS" class="headerlink" title="C. 我已经完全理解了多源BFS"></a>C. 我已经完全理解了多源BFS</h3><blockquote>
+<p>在平面直角坐标系中, 称横纵坐标均为整数的点为格点.</p>
+<p>对于两个格点 $(x_1, y_1)$ 和 $(x_2, y_2)$, 定义它们相邻当且仅当 $\max( \vert x_1-x_2 \vert ,  \vert y_1-y_2 \vert ) &#x3D; 1$.</p>
+<p>给出 $n$ 个互不相同的作为 BFS 源的格点 $(x_1, y_1), (x_2, y_2), . . . , (x_n, y_n)$, 以及一个参数 $k$, 从它们出发进行多源 BFS:</p>
+<ol>
+<li>对于所有格点 $(x, y)$, 令 $dis(x, y)\gets 0$. 并维护一个队列, 初始时为空.</li>
+<li>对于 $1 ≤ i ≤ n$, 将 $(x_i, y_i)$ 入队, 并令 $dis(x_i, y_i)\gets 1$.</li>
+<li>取出队首格点, 假设为 $(x_p, y_p)$, 如果 $dis(x_p, y_p) &#x3D; k$, 转到 $5$.</li>
+<li>枚举所有与 $(x_p, y_p)$ 相邻的格点 $(x_q, y_q)$, 如果 $dis(x_q, y_q) &#x3D; 0$, 则将 $(x_q, y_q)$ 入队, 并令<br>$dis(x_q, y_q)\gets dis(x_p, y_p) + 1$.</li>
+<li>如果队列非空, 转到 $3$, 否则多源 BFS 结束.</li>
+</ol>
+<p>对所有格点 $(x, y)$ 的 $dis(x, y)$ 求和, 可以证明这个数是有限的.</p>
+<p>由于答案可能很大, 你只需输出答案对 $998244353$ 取模的结果.</p>
+</blockquote>
+<p>肯定要扫描线, 那么对于一条平行于 $y$ 轴的扫描线分成若干区间, 每个区间对应的起点相同, 那一个区间改变就是扫描线扫到了某两个出发点在横轴上的中点, 或者进入&#x2F;退出某个起点的区域, 次数是 $n^2$ 量级的.</p>
+<p>开什么玩笑, 俩东西都交点是斜线.</p>
+<p>官方正解是考虑按照 $k$ 分层, 每次加上这层的 $k$ 和上层的 $k$ 的面积差再乘 $k$ 的式子, 其中这个会发生 $n^2$ 次变化(两个起点同时拓展到某个区域), 注意到在某个不变化的区间内这个差是二次函数, 所以可以直接取三个点值插出答案. 算点值的方法就成了矩形并矩形面积, 复杂度 $n^3\log n$</p>
+<p>另一个做法是直接转曼哈顿距离, 然后过每个起点画横竖线, 得到 $n^2$ 个矩形, 注意到每个矩形都是四个角先被拓展到, 然后才是里面的东西, 而两个角在矩形内的贡献的分割线是一条水平竖直线(相邻)或斜线(对角), 于是每个角的贡献是一个缺一个角的五边形的形态, 可以直接数学方法暴力算贡献, 复杂度为 $O(n^2)$</p>
+<h2 id="Day3"><a href="#Day3" class="headerlink" title="Day3"></a>Day3</h2><h3 id="陌生的城市"><a href="#陌生的城市" class="headerlink" title="陌生的城市"></a>陌生的城市</h3><blockquote>
+<p>济南对于小猫来说是一座陌生的城市. 今天小猫带来了家乡的土特产——FJOI 字符串题.</p>
+<p>小猫喜欢循环串. 如果字符串 $s$ 的长度为 $n$ 而最小循环节长度为 $m$, 定义它的美观度为 $\frac{n^2}m$. 这里循环节要求 $m \vert n$.</p>
+<p>FJOI 喜欢子序列. 给定一个只包含 $a, b, c$ 的字符串, 求其全体非空子序列的最大美观度.</p>
+<p>多组数据.</p>
+<p>$t\le 10, n\le 10^5$</p>
+</blockquote>
+<p>首先, 注意到它写的不是子串(? )</p>
+<p>答案最小是 $\dfrac{n^2}{9}$, 于是只用考虑 $m\le 8$ 的那部分, 然后暴力跑匹配, 算一下计算量是 $10^10$</p>
+<p>考虑预处理每个位置往后6位, 运算量是 $1. 6e9$.</p>
+<p>考虑每个循环移位出来的串, 可以只跑一次匹配, 然后 $O(m)$ 的一起处理, 现在应该在 $2e8$ 到 $3e8$ 之间.</p>
+<p>冲!</p>
+<p>好吧, 正解表示, 设重复 $k$ 次, 答案是 $k^2m$, 而考虑出现次数最多的那个数的出现次数 $(k\dfrac{m}{3})$, 如果我们不是直接用这一个数更新答案, 那么就有一个不等式, 发现 $m\in {2, 3, 5, 6}$, 就直接做完了.</p>
+<h3 id="大原题"><a href="#大原题" class="headerlink" title="大原题"></a>大原题</h3><blockquote>
+<p>有 $n$ 个盒子, 第 $i$ 个盒子里有 $a_i$ 个标有数字 $i$ 的球, 代表第 $i$ 种奖品.</p>
+<p>接下来依次进行 $m$ 次操作, 每次指定两个不同的盒子 $x_i, y_i$, 玩家可以从 $x_i, y_i$ 中各拿出一个球交换, 也可以放弃这次机会.</p>
+<p>玩家最终会抱着第 $1$ 个盒子回家, 所以目标是最大化第 $1$ 个盒子中的数字种类数.</p>
+<p>$n, m, a_i\le 3000$</p>
+</blockquote>
+<p>每个交换看作边, 盒子看作点, 就是一张图, 从 $1$ 出发, 走边权递增的不交的路径能到最多多少个盒子. 考虑网络流, 能到多少个点就成了每个点有 $1$ 的入流求最大流, 前面的部分可以来一个点边互换. 但这是无限 $a_i$ 版.</p>
+<p>考虑 $a_i$ 点限制是同一时刻盒子里装的最大球数, 把盒子按照时刻拆点成一列, 每一时刻向下一时刻连 $a_i$, 这样点边互换部分可以删了. 每个点建连用到的时间, 点数是 $n+2m$, 边数是 $4m$ 这样的.</p>
+<p>需要快速的网络流.</p>
+<h3 id="美丽的世界"><a href="#美丽的世界" class="headerlink" title="美丽的世界"></a>美丽的世界</h3><blockquote>
+<blockquote>
+<p>小猫和粉兔在异世界探险. 他们得到了 $m$ 件装备, 要进行分配. 小猫和粉兔各有 $n$ 个装备栏, 每栏至多穿戴一件装备. 同一件装备会对两个人的战斗力都产生影响, 他们的战斗力也就是他们所有装备提供的战斗力之和. 现在要求符合条件下的所有分配方案中, 合作战斗力的最小值. 保证存在至少一种合法的分配方案.</p>
+</blockquote>
+<p>$n\leq 5 \times 10^5, m\leq 2n$</p>
+<p>$1\leq x_i, y_i\leq n$</p>
+<p>$0\leq a_i, b_i\leq 10^6$</p>
+<p>$\sum^n_{i&#x3D;1} a_i, \sum^n_{i&#x3D;1} b_i\leq 2 \times 10^9$.</p>
+</blockquote>
+<p>容易想到把装备栏看成两排点, 每个装备看成一条边 $(x_i, y_i)$, 那么因为每个栏最后只有一个入度, 所以有解给出的一定是一个基环树-树的森林.</p>
+<p>把两个人的得分画到平面上, 那么有若干点, 用 $y&#x3D;\dfrac{k}{x}$ 去切, 发现最后一定是一个左下凸壳, 于是把每个连通块的所有可能答案(基环树只有两个, 树枚举每个点作为根)算出来跑闵和.  </p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%97%A5%E5%BF%97/">日志</a></div><div class="post_share"></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/10/21/lyh/" title="LYHDP选做"><img class="cover" src="/img/2022-11-15-20-37-07-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-21</div><div class="title">LYHDP选做</div></div></a></div><div><a href="/2022/09/12/greedy/" title="I Can&#39;t Be Greedy"><img class="cover" src="/img/2022-11-17-16-02-38-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-12</div><div class="title">I Can&#39;t Be Greedy</div></div></a></div><div><a href="/2022/07/02/count/" title="数数"><img class="cover" src="/img/2022-11-23-20-33-31-image.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-02</div><div class="title">数数</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.ico" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">FireInIce</div><div class="author-info__description">FireInIce's blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">52</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">33</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.luogu.com.cn/user/235671"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2021%E7%9C%81%E9%98%9F%E9%9B%86%E8%AE%AD-%E6%A8%A1%E6%8B%9F"><span class="toc-number">1.</span> <span class="toc-text">2021省队集训-模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Day1"><span class="toc-number">1.1.</span> <span class="toc-text">Day1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E6%95%B0%E6%8E%92%E5%88%97"><span class="toc-number">1.1.1.</span> <span class="toc-text">A. 数排列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E5%8F%96%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">B. 取石子游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E6%BB%91%E5%86%B0"><span class="toc-number">1.1.3.</span> <span class="toc-text">C. 滑冰</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day2"><span class="toc-number">1.2.</span> <span class="toc-text">Day2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-%E6%88%91%E5%B7%B2%E7%BB%8F%E5%AE%8C%E5%85%A8%E7%90%86%E8%A7%A3%E4%BA%86DFS%E5%BA%8F%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="toc-number">1.2.1.</span> <span class="toc-text">A. 我已经完全理解了DFS序线段树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-%E6%88%91%E5%B7%B2%E7%BB%8F%E5%AE%8C%E5%85%A8%E7%90%86%E8%A7%A3%E4%BA%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%93%88%E5%B8%8C"><span class="toc-number">1.2.2.</span> <span class="toc-text">B. 我已经完全理解了字符串哈希</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E6%88%91%E5%B7%B2%E7%BB%8F%E5%AE%8C%E5%85%A8%E7%90%86%E8%A7%A3%E4%BA%86%E5%A4%9A%E6%BA%90BFS"><span class="toc-number">1.2.3.</span> <span class="toc-text">C. 我已经完全理解了多源BFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Day3"><span class="toc-number">1.3.</span> <span class="toc-text">Day3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%8C%E7%94%9F%E7%9A%84%E5%9F%8E%E5%B8%82"><span class="toc-number">1.3.1.</span> <span class="toc-text">陌生的城市</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%8E%9F%E9%A2%98"><span class="toc-number">1.3.2.</span> <span class="toc-text">大原题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BE%8E%E4%B8%BD%E7%9A%84%E4%B8%96%E7%95%8C"><span class="toc-number">1.3.3.</span> <span class="toc-text">美丽的世界</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/30/noiwc2024/" title="NOIWC">NOIWC</a><time datetime="2024-01-29T16:00:00.000Z" title="Created 2024-01-30 00:00:00">2024-01-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/26/thuwc/" title="2024冬令营">2024冬令营</a><time datetime="2024-01-25T16:00:00.000Z" title="Created 2024-01-26 00:00:00">2024-01-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/18/prepare/" title="2024省选准备">2024省选准备</a><time datetime="2024-01-17T16:00:00.000Z" title="Created 2024-01-18 00:00:00">2024-01-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By FireInIce</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://unpkg.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://unpkg.com/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.2
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container:not\([display]\)').forEach(node => {
+            const target = node.parentNode
+            if (target.nodeName.toLowerCase() === 'li') {
+              target.parentNode.classList.add('has-jax')
+            } else {
+              target.classList.add('has-jax')
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://unpkg.com/mathjax/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script></div><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/emoji.js"></script><script src="/js/blog.js"></script><script src="/js/canvasparticle.js"></script><script src="/js/particletext.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://unpkg.com/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://unpkg.com/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://unpkg.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>
