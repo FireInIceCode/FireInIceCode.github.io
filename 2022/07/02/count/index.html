@@ -7,7 +7,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://fireinicecode.github.io/img/2022-11-23-20-33-31-image.png">
 <meta property="article:published_time" content="2022-07-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-31T01:55:32.565Z">
+<meta property="article:modified_time" content="2024-02-13T04:47:33.735Z">
 <meta property="article:author" content="FireInIce">
 <meta property="article:tag" content="日志">
 <meta property="article:tag" content="dp">
@@ -56,7 +56,7 @@
   isHome: false,
   isHighlightShrink: true,
   isToc: true,
-  postUpdate: '2024-01-31 09:55:32'
+  postUpdate: '2024-02-13 12:47:33'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -239,32 +239,32 @@
 <p>$$<br>\begin{gathered}<br>G(x)&#x3D;\sum_{i&#x3D;1} i! x^i\<br>G’(x)&#x3D;\sum_{i&#x3D;1} i\cdot i! x^{i-1}\<br>(x-1)G(x)+x^2G’(x)+x&#x3D;0\<br>(H(x)-1)x+H^2(x)G’(H(x))+H(x)&#x3D;0\<br>\because G(H(x))&#x3D;x\<br>\therefore G’(H(x))H’(x)&#x3D;1\<br>\therefore (H(x)-1)x+\frac{H^2(x)}{H’(x)}+H(x)&#x3D;0\<br>xH(x)H’(x)-xH’(x)+H^2(x)+H(x)H’(x)&#x3D;0\<br>nh_n&#x3D;\sum_{i&#x3D;0}^{n-2}(i+1)h_{i+1}h_{n-1-i}+\sum_{i&#x3D;1}^{n-1}h_ih_{n-i}+\sum_{i&#x3D;0}^{n-1}(i+1)h_{i+1}h_{n-i}\<br>-g_1h_n&#x3D;\sum_{i&#x3D;1}^{n-1}(i+1)r_ir_{n-i}+\sum_{i&#x3D;2}^{n-1}ir_ir_{n+1-i}\<br>\because F(G)&#x3D;x<br>\therefore [x]F(G)&#x3D;f_1g_1&#x3D;g_1&#x3D;[x]x&#x3D;1<br>\end{gathered}<br>$$</p>
 <p>卷积形式, 分治NTT, 复杂度 $n\log^2 n$.</p>
 <p>[think] 对微分有限的东西求复合逆, 就微分列出微分方程, 再带入得到关于复合逆的微分方程, 再转递推式上FFT</p>
-<p>补充一下,写的时候会让人感到疑惑在于$G,F,H$都是没常数的,于是不能求逆,但是你最后求的是$\dfrac{x}{H}&#x3D;\dfrac{1}{\frac{H}{x}}$就没问题了.</p>
+<p>补充一下, 写的时候会让人感到疑惑在于 $G, F, H$ 都是没常数的, 于是不能求逆, 但是你最后求的是 $\dfrac{x}{H}&#x3D;\dfrac{1}{\frac{H}{x}}$ 就没问题了.</p>
 <h3 id="P8354-SDOI-x2F-SXOI2022-多边形"><a href="#P8354-SDOI-x2F-SXOI2022-多边形" class="headerlink" title="P8354 [SDOI&#x2F;SXOI2022] 多边形"></a>P8354 [SDOI&#x2F;SXOI2022] 多边形</h3><blockquote>
 <p>$n$ 条边的凸多边形每条边上又额外有 $a_i-1$ 个顶点, 求三角剖分数, 要求一条边上的两个顶点不能连线, 边中间上可以有顶点不连线.</p>
 <p>$\sum a_i\le 5\times 10^5$</p>
 </blockquote>
 <p>和普通的卡特兰数相比就是后面的两个限制.</p>
-<p>对于一条边上可以有不连的只要选出点数就行了,现在先假设所有点都要被选,问题是同一条边的不能连线,容易发现若存在同一边连线必然存在恰好跨过一个点的边,于是对这样的边容斥,而钦点这样的相当于直接删掉中间的点.</p>
-<p>终止假设,于是对于删掉中间点,删掉不选的点的最终局面的一条线段,其贡献系数应该为$1-(c-1)$($c$为跨过的段数),其中第一个$1$是正常贡献,后面$c-1$是枚举它跨过了中间的一个点.设$a_i$原题目多边形上一条边的段数,则一条边上选$k$条边的容斥系数最后就是</p>
+<p>对于一条边上可以有不连的只要选出点数就行了, 现在先假设所有点都要被选, 问题是同一条边的不能连线, 容易发现若存在同一边连线必然存在恰好跨过一个点的边, 于是对这样的边容斥, 而钦点这样的相当于直接删掉中间的点.</p>
+<p>终止假设, 于是对于删掉中间点, 删掉不选的点的最终局面的一条线段, 其贡献系数应该为 $1-(c-1)$($c$ 为跨过的段数), 其中第一个 $1$ 是正常贡献, 后面 $c-1$ 是枚举它跨过了中间的一个点. 设 $a_i$ 原题目多边形上一条边的段数, 则一条边上选 $k$ 条边的容斥系数最后就是</p>
 <p>$$<br><a href="%5Csum_%7Bc=1%7D(2-c)x%5Ec">x^{a_i}</a>^k&#x3D;<a href="%5Cdfrac%7B-2x%5E2+x%7D%7B(1-x)%5E2%7D">x^{a_i}</a>^k<br>$$</p>
-<p>要对所有$k$算这个东西,也就是设</p>
-<p>$$<br>F(x,z)&#x3D;\dfrac{1}{1-z\frac{-2x^2+x}{(1-x)^2}}&#x3D;\dfrac{(1-x)^2}{(2z+1)x-(z+2)x+1}<br>$$</p>
-<p>有一个很粗暴的方法了,求$[x^{a_i}]F$,看成关于$x$的多项式,就是线性递推那类的东西,复杂度是$T(n)&#x3D;2T(n&#x2F;2)+O(n)$,则$T(a_i)&#x3D;a_i\log a_i$是可以过的,然后对$y$的多项式你应该带着点值算以卡常.</p>
-<p>可以考虑拉反,设$G(x)&#x3D;\dfrac{-2x^2+x}{(1-x)^2}$,$G(R)&#x3D;x$,则有</p>
+<p>要对所有 $k$ 算这个东西, 也就是设</p>
+<p>$$<br>F(x, z)&#x3D;\dfrac{1}{1-z\frac{-2x^2+x}{(1-x)^2}}&#x3D;\dfrac{(1-x)^2}{(2z+1)x-(z+2)x+1}<br>$$</p>
+<p>有一个很粗暴的方法了, 求 $[x^{a_i}]F$, 看成关于 $x$ 的多项式, 就是线性递推那类的东西, 复杂度是 $T(n)&#x3D;2T(n&#x2F;2)+O(n)$, 则 $T(a_i)&#x3D;a_i\log a_i$ 是可以过的, 然后对 $y$ 的多项式你应该带着点值算以卡常.</p>
+<p>可以考虑拉反, 设 $G(x)&#x3D;\dfrac{-2x^2+x}{(1-x)^2}$, $G(R)&#x3D;x$, 则有</p>
 <p>$$<br>[x^n]G^k&#x3D;[x^{n-1}]\dfrac{1}{n}kx^{k-1}(\dfrac{x}{R})^n&#x3D;\dfrac{k}{n}<a href="%5Cdfrac%7Bx%7D%7BR%7D">x^{n-k}</a>^n<br>$$</p>
-<p>我们把多项式的指数统一了!现在只要知道$(\dfrac{x}{R})^n$是啥,设$H&#x3D;\dfrac{x}{R}$,则因为</p>
+<p>我们把多项式的指数统一了! 现在只要知道 $(\dfrac{x}{R})^n$ 是啥, 设 $H&#x3D;\dfrac{x}{R}$, 则因为</p>
 <p>$$<br>G&#x3D;\dfrac{-2x^2+x}{(1-x)^2}\<br>x&#x3D;\dfrac{-2R^2+R}{(1-R)^2}<br>$$</p>
-<p>$R$是微分有限的,所以$H&#x3D;\dfrac{x}{R}$也是微分有限的,$H^n$也是微分有限的,你可以得到一个线性的递推式.</p>
+<p>$R$ 是微分有限的, 所以 $H&#x3D;\dfrac{x}{R}$ 也是微分有限的, $H^n$ 也是微分有限的, 你可以得到一个线性的递推式.</p>
 <h3 id="ARC132F-Takahashi-The-Strongest"><a href="#ARC132F-Takahashi-The-Strongest" class="headerlink" title="[ARC132F] Takahashi The Strongest"></a>[ARC132F] Takahashi The Strongest</h3><blockquote>
-<p>小 $A,B,C$ 在玩石头剪刀布，分别用 $R,S,P$ 表示。小 $A$ 有 $n$ 个策略，小 $B$ 有 $m$ 个策略，一个策略是一个长度为 $k$ 的包含 $R,S,P$ 的字符串，表示每一局会固定出什么。对于小 $C$ 的一种策略，如果在中途某一次小 $C$ 是绝对赢家，那么小 $C$ 会开心。对于小 $C$ 每种可能的策略，求出有多少种 $A,B$ 的组合策略（一共有 $nm$ 种组合）使得小 $C$ 会开心。</p>
+<p>小 $A, B, C$ 在玩石头剪刀布, 分别用 $R, S, P$ 表示. 小 $A$ 有 $n$ 个策略, 小 $B$ 有 $m$ 个策略, 一个策略是一个长度为 $k$ 的包含 $R, S, P$ 的字符串, 表示每一局会固定出什么. 对于小 $C$ 的一种策略, 如果在中途某一次小 $C$ 是绝对赢家, 那么小 $C$ 会开心. 对于小 $C$ 每种可能的策略, 求出有多少种 $A, B$ 的组合策略(一共有 $nm$ 种组合)使得小 $C$ 会开心.</p>
 <ul>
-<li>$1\leq k\leq 12,1\leq n,m\leq 3^k$</li>
+<li>$1\leq k\leq 12, 1\leq n, m\leq 3^k$</li>
 </ul>
 </blockquote>
-<p>即存在某一轮$A,B$相同且恰好比$C$少$1$,考虑定义$4$进制类FWT的卷积使得对于每一位<br>$$<br>x\otimes y&#x3D;\begin{cases}<br>    x\ if\ x&#x3D;y,\<br>    3\ if\ x&#x3D;y<br>\end{cases}<br>$$<br>用和FWT相同的方法构造矩阵,即设$j$对$i$的贡献为$c(i,j)$要求$c(i,j)c(i,k)&#x3D;c(i,j\otimes k)$,则是要解$c_i\in {-1,1,0},c_3&#x3D;c_0c_1&#x3D;c_0c_2&#x3D;c_1c_2$,大概拿出来有$[1,0,0,0],[0,0,1,0],[0,1,0,0],[1,1,1,1]$的解(全$0$没有逆),有矩阵</p>
+<p>即存在某一轮 $A, B$ 相同且恰好比 $C$ 少 $1$, 考虑定义 $4$ 进制类FWT的卷积使得对于每一位<br>$$<br>x\otimes y&#x3D;\begin{cases}<br>    x\ if\ x&#x3D;y, \<br>    3\ if\ x&#x3D;y<br>\end{cases}<br>$$<br>用和FWT相同的方法构造矩阵, 即设 $j$ 对 $i$ 的贡献为 $c(i, j)$ 要求 $c(i, j)c(i, k)&#x3D;c(i, j\otimes k)$, 则是要解 $c_i\in {-1, 1, 0}, c_3&#x3D;c_0c_1&#x3D;c_0c_2&#x3D;c_1c_2$, 大概拿出来有 $[1, 0, 0, 0], [0, 0, 1, 0], [0, 1, 0, 0], [1, 1, 1, 1]$ 的解(全 $0$ 没有逆), 有矩阵</p>
 <p>$$<br>\begin{bmatrix}<br> 1 &amp; 0 &amp; 0 &amp; 1\<br> 0 &amp; 1 &amp; 0 &amp; 1\<br> 0 &amp; 0 &amp; 1 &amp; 1\<br> 0 &amp; 0 &amp; 0 &amp; 1<br>\end{bmatrix}<br>$$</p>
-<p>实际上是做前缀和,认为$0,1,2\subset 3$.显然有逆,可以卷积.求出$A$,$B$策略卷起来的序列$f_T$,再把策略平移一位,变成对每个$S$(三进制)的$\sum_{T\cap S\ne \varnothing}f_T$.改成求$\sum_{T\cup S&#x3D;\varnothing}f_T$,</p>
+<p>实际上是做前缀和, 认为 $0, 1, 2\subset 3$. 显然有逆, 可以卷积. 求出 $A$, $B$ 策略卷起来的序列 $f_T$, 再把策略平移一位, 变成对每个 $S$(三进制)的 $\sum_{T\cap S\ne \varnothing}f_T$. 改成求 $\sum_{T\cup S&#x3D;\varnothing}f_T$,</p>
 <h2 id="2-luogu某题单"><a href="#2-luogu某题单" class="headerlink" title="2. luogu某题单"></a>2. luogu某题单</h2><p>然后做不动了appleblue太强悍. 随便找点, 下面是luogu上的一个题单</p>
 <h3 id="CF1657E-Star-Mst"><a href="#CF1657E-Star-Mst" class="headerlink" title="CF1657E Star Mst"></a>CF1657E Star Mst</h3><blockquote>
 <p>求 $n$ 个点的无向完全图有多少个满足最小生成树的权值和等于所有和点1相连的边的权值和, 每条边边权为 $[1, v]$ , $n, v \le 250$ </p>
@@ -1027,20 +1027,20 @@
 <p>见到排列还有这个 $p_{p_i}$ 直接拆环考虑. 一开始读错题以为 $a$ 也是排列, 那显然 $p$ 中的环在 $a$ 中也是一个环, 对于单独一个环, 方案数是 $1+(n\bmod 2)$, 两个大小相同的环可以合并, 方案变为 $len$. 这个数起来就, 对每个大小的环分别考虑, 相当于算从 $n$ 个中选 $k$ 个匹配的方案数, 可以简单组合数.</p>
 <p>然后要考虑 $a$ 组成的图中的基环树, 也是好做的, 容易发现一个基环树无法和环合并, 树上每个点除了环边最多有一个入度, 看起来像是把一堆链的链头串起来. 那么因为无法合并每个基环树单独做, 对于一个基环树上的一个点 $i$ 在环外有长为 $l$ 的链, 如果 $i$ 在环上往前走 $l$ 个点都没挂链方案数是 $1$, 如果往前 $l+1$ 个都没挂链方案数是 $2$, 否则是 $0$, 于是就做完了.</p>
 <h3 id="ARC134F-Flipping-Coins"><a href="#ARC134F-Flipping-Coins" class="headerlink" title="ARC134F Flipping Coins"></a>ARC134F Flipping Coins</h3><blockquote>
-<p>给定一排 $n$ 枚硬币，初始时所有硬币正面向上。</p>
-<p>Snuke 会等概率地选择一个长度为 $n$ 的排列 $p &#x3D; (p_1, p_2, \dots, p_n)$，并执行 $n$ 次操作。第 $i$ 次操作会执行如下步骤：</p>
+<p>给定一排 $n$ 枚硬币, 初始时所有硬币正面向上.</p>
+<p>Snuke 会等概率地选择一个长度为 $n$ 的排列 $p &#x3D; (p_1, p_2, \dots, p_n)$, 并执行 $n$ 次操作. 第 $i$ 次操作会执行如下步骤:</p>
 <ul>
-<li>若第 $i$ 枚硬币是反面朝上的，什么也不做。</li>
-<li>若第 $i$ 枚硬币是正面朝上的，翻转它，并翻转第 $p_i$ 枚硬币。</li>
+<li>若第 $i$ 枚硬币是反面朝上的, 什么也不做.</li>
+<li>若第 $i$ 枚硬币是正面朝上的, 翻转它, 并翻转第 $p_i$ 枚硬币.</li>
 </ul>
-<p>给定 $w$。设 $n$ 次操作完后正面朝上的硬币数为 $k$，则这排列的贡献即为 $w^k$。</p>
-<p>你需要求出这贡献的期望值乘 $n!$ 后在模 $998244353$ 意义下的值。容易证明这值定是整数。</p>
-<p>$1\le n\le 2\times 10^5, \ 1\le w &lt; 998244353$。</p>
+<p>给定 $w$. 设 $n$ 次操作完后正面朝上的硬币数为 $k$, 则这排列的贡献即为 $w^k$.</p>
+<p>你需要求出这贡献的期望值乘 $n!$ 后在模 $998244353$ 意义下的值. 容易证明这值定是整数.</p>
+<p>$1\le n\le 2\times 10^5, \ 1\le w &lt; 998244353$.</p>
 </blockquote>
-<p>考虑排列拆成若干个环独立,那么可以算一个环的答案然后 exp.再考虑对于一个环可以分成若干个递增段,则硬币$i$当且仅当一个递增段最后一位$p_j&#x3D;i$且递增段长度为奇数才会是正面.</p>
-<p>于是一个递增段的贡献关于长度的生成函数可以写成$F(x)&#x3D;\sum_{i&#x3D;0} w^{i\bmod 2}\dfrac{x^i}{i!}$.但是环的EGF并不是$G(x)&#x3D;\sum_{i&#x3D;1} \dfrac{F^i}{i}&#x3D;\ln 1-F$因为不满足连续段极长的限制,也就是实际上的一个连续段由多个卷起来的连续段贡献了.</p>
-<p>考虑容斥,对于每个长$i$的连续段给系数$c_i$,则一个方案的容斥系数是$\prod c_i$,总答案是$\sum \prod_{i\in S} c_i$,这里$S$是遍历不加限制的拼的方案.如果一个段实际上的值是$a_i$,那么总的答案$\sum \prod_{i\in T} a_i$,这里$T$是有极长限制的拼法的情况,那么若对于一段$a_i$是所有拼出它的系数的和$a_i&#x3D;\sum c_j$,$\sum \prod_{i\in T}a_i$就真的等于$\sum \prod_i (\sum c_j)$了.所以只要满足一段的容斥系数是对的,也就是这一段的真实权值$a_n&#x3D;\sum_{S_k\ s.t.\ \sum_i s_i&#x3D;n} \prod_i c_{S_i}$,其中$S$是每一种拼出长$k$连续段的方案数.翻译成生成函数,设$H(x)&#x3D;\sum_{i&#x3D;0} w^{i\bmod 2}x^i$,则$\dfrac{1}{1-C(x)}&#x3D;H(x),\therefore\ C(x)&#x3D;1-\dfrac{1}{H(x)}$.</p>
-<p>刚才得到的$C$是$c_i$的OGF,换成EGF$C_e&#x3D;\sum_i c_i\dfrac{x^i}{i!}$就可以带到刚才$G$的错误式子里得到答案了,$Ans&#x3D;\exp G(x)&#x3D;\exp (\ln (1-C’))&#x3D;1-C’&#x3D;(\dfrac{1}{H(x)})_e$.(用$F_e$表示$F$对应的EGF).</p>
+<p>考虑排列拆成若干个环独立, 那么可以算一个环的答案然后 exp. 再考虑对于一个环可以分成若干个递增段, 则硬币 $i$ 当且仅当一个递增段最后一位 $p_j&#x3D;i$ 且递增段长度为奇数才会是正面.</p>
+<p>于是一个递增段的贡献关于长度的生成函数可以写成 $F(x)&#x3D;\sum_{i&#x3D;0} w^{i\bmod 2}\dfrac{x^i}{i! }$. 但是环的EGF并不是 $G(x)&#x3D;\sum_{i&#x3D;1} \dfrac{F^i}{i}&#x3D;\ln 1-F$ 因为不满足连续段极长的限制, 也就是实际上的一个连续段由多个卷起来的连续段贡献了.</p>
+<p>考虑容斥, 对于每个长 $i$ 的连续段给系数 $c_i$, 则一个方案的容斥系数是 $\prod c_i$, 总答案是 $\sum \prod_{i\in S} c_i$, 这里 $S$ 是遍历不加限制的拼的方案. 如果一个段实际上的值是 $a_i$, 那么总的答案 $\sum \prod_{i\in T} a_i$, 这里 $T$ 是有极长限制的拼法的情况, 那么若对于一段 $a_i$ 是所有拼出它的系数的和 $a_i&#x3D;\sum c_j$, $\sum \prod_{i\in T}a_i$ 就真的等于 $\sum \prod_i (\sum c_j)$ 了. 所以只要满足一段的容斥系数是对的, 也就是这一段的真实权值 $a_n&#x3D;\sum_{S_k\ s. t. \ \sum_i s_i&#x3D;n} \prod_i c_{S_i}$, 其中 $S$ 是每一种拼出长 $k$ 连续段的方案数. 翻译成生成函数, 设 $H(x)&#x3D;\sum_{i&#x3D;0} w^{i\bmod 2}x^i$, 则 $\dfrac{1}{1-C(x)}&#x3D;H(x), \therefore\ C(x)&#x3D;1-\dfrac{1}{H(x)}$.</p>
+<p>刚才得到的 $C$ 是 $c_i$ 的OGF, 换成EGF $C_e&#x3D;\sum_i c_i\dfrac{x^i}{i! }$ 就可以带到刚才 $G$ 的错误式子里得到答案了, $Ans&#x3D;\exp G(x)&#x3D;\exp (\ln (1-C’))&#x3D;1-C’&#x3D;(\dfrac{1}{H(x)})_e$. (用 $F_e$ 表示 $F$ 对应的EGF).</p>
 <p>最后你只要求逆再求逆.</p>
 <h3 id="LOJ6728-U群把妹王-TopCoder13444"><a href="#LOJ6728-U群把妹王-TopCoder13444" class="headerlink" title="LOJ6728 U群把妹王 TopCoder13444"></a>LOJ6728 U群把妹王 TopCoder13444</h3><blockquote>
 <p>有 $n \times m$ 个格子, 每个格进行染色, 可以选择 $k$ 种颜色之一. 对于集合 $S, T$, 你需要计数有多少种格子的染色方案, 满足:</p>
@@ -1051,7 +1051,7 @@
 <p>答案对 $P &#x3D; 998244353$ 取模.<br>为了让这道题看起来代码比较健康, 保证 $1 \in S \cap T$.</p>
 <p>TopCoder是这个的 $S&#x3D;T&#x3D;{1}$ 情况</p>
 </blockquote>
-<p>虽然先看的这个题,但感觉上面的ARC134F里对这个容斥说的更清楚.</p>
+<p>虽然先看的这个题, 但感觉上面的ARC134F里对这个容斥说的更清楚.</p>
 <p>首先弱化版是斯特林数反演题, 考虑如果只要求列互不相同方案数是 $f(n)&#x3D;{(k^n)}^{\underline{m}}$, 而 $g(n)$ 表示在此基础上要求行互不相同, 那么有 $f(n)&#x3D;\sum_i {n\brace i}g(i)$, 于是直接反演得到 $g$ 即可.</p>
 <p>强化版考虑更强的容斥, 对于一维问题每种颜色出现次数必须在 $S$ 中, 不考虑限制, 方案数是 $k^n$, $k^n$ 意味着有些相同, 把相同的元素组成的集合再放到一起组成集合 $L&#x3D;{S_1\ldots S_l}$, 其中每个 $S$ 表示一个颜色相同的集合, 那么最后答案应该是 $\sum_L c(L)k^{\vert L\vert}$, 现在因为限制是对 $\vert S_i\vert$ 的, 我们希望 $c(L)&#x3D;\prod_i d(\vert S_i\vert)$, 这样一来取 $k&#x3D;1$ 就有</p>
 <p>$$<br>ans(n)&#x3D;[x^n]1+\sum_{i\in S} x^i&#x3D;\sum_L c(L)&#x3D;n! [x^n]\exp(\sum_i \dfrac{d(i)x^i}{i! })<br>$$</p>

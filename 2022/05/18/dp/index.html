@@ -7,7 +7,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://fireinicecode.github.io/img/2022-11-23-20-19-47-image.png">
 <meta property="article:published_time" content="2022-05-17T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-30T08:35:47.558Z">
+<meta property="article:modified_time" content="2024-02-13T04:47:33.486Z">
 <meta property="article:author" content="FireInIce">
 <meta property="article:tag" content="日志">
 <meta property="article:tag" content="dp">
@@ -54,7 +54,7 @@
   isHome: false,
   isHighlightShrink: true,
   isToc: true,
-  postUpdate: '2024-01-30 16:35:47'
+  postUpdate: '2024-02-13 12:47:33'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -653,9 +653,9 @@
 <p>询问所有方案中能得到的不同的 $B$ 的数量.</p>
 <p>$1 \le N \le 300$.</p>
 </blockquote>
-<p>首先全是$-1$的时候发现实际上看成选一条从$(0,0)$每次走$(1,1)$或$(1,-1)$走到$(n,0)$的方案数再乘$n!$,因为显然此时只要考虑给数配对,每一对数的$\min$的集合,于是从小到大,让第$i$次走$(1,1)$表示第$i$小的数作为一个数对的$\min$即可.</p>
-<p>而现在有了一些确定的数,显然填好的数对直接扔了,而填了一半的是重点,因为现在它的位置是重要的了!那么只能考虑dp,肯定是记录$f_{i,j,k}$表示前$i$个数,有$j$个填了一半且位置不定的和$k$个填了一半且位置确定的.如果从小到大走发现,从大到小则很容易,每次要么新开一个对要么结束一个以前的对,如果用当前位置位置确定的结束一个不确定的对则要乘上不确定的个数,相当于此时为那个对确定位置.复杂度$n^3$.</p>
-<p>感觉比较迷惑的在于怎么看出转移方向,主要问题就在于每个对中大的那一个不重,于是从小到大dp时结束一个对的位置不同不应算多次,但这个没法整.</p>
+<p>首先全是 $-1$ 的时候发现实际上看成选一条从 $(0, 0)$ 每次走 $(1, 1)$ 或 $(1, -1)$ 走到 $(n, 0)$ 的方案数再乘 $n!$, 因为显然此时只要考虑给数配对, 每一对数的 $\min$ 的集合, 于是从小到大, 让第 $i$ 次走 $(1, 1)$ 表示第 $i$ 小的数作为一个数对的 $\min$ 即可.</p>
+<p>而现在有了一些确定的数, 显然填好的数对直接扔了, 而填了一半的是重点, 因为现在它的位置是重要的了! 那么只能考虑dp, 肯定是记录 $f_{i, j, k}$ 表示前 $i$ 个数, 有 $j$ 个填了一半且位置不定的和 $k$ 个填了一半且位置确定的. 如果从小到大走发现, 从大到小则很容易, 每次要么新开一个对要么结束一个以前的对, 如果用当前位置位置确定的结束一个不确定的对则要乘上不确定的个数, 相当于此时为那个对确定位置. 复杂度 $n^3$.</p>
+<p>感觉比较迷惑的在于怎么看出转移方向, 主要问题就在于每个对中大的那一个不重, 于是从小到大dp时结束一个对的位置不同不应算多次, 但这个没法整.</p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="CF1768F-Wonderful-Jump"><a href="#CF1768F-Wonderful-Jump" class="headerlink" title="CF1768F Wonderful Jump"></a>CF1768F Wonderful Jump</h3><blockquote>
 <p>给定整数 $n$ 和长度为 $n$ 的序列 $a$.<br>从位置 $i$ 跳到位置 $j(1\leq i\leq j\leq n)$ 需要花费 $\min(a_i, a_{i+1}, \cdots, a_j)\times(j-i)^2$ 枚金币.<br>对于 $k&#x3D;1, 2, \cdots, n$, 求出从位置 $1$ 经若干次跳跃后跳到位置 $k$ 需要的最小金币总数.<br>$n\le 4\times 10^5, a_i\le n$</p>
 </blockquote>
